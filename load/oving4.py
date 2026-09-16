@@ -56,19 +56,19 @@ plt.plot(lastprofil_dogn.index, lastprofil_dogn["Consumption"], label="Forbruk")
 
 plt.title("Produksjon Og Forbruk 1.Januar.2026")
 plt.xlabel("Tid")
-plt.ylabel("MW")
+plt.ylabel("Effekt")
 plt.grid(True)
 plt.legend()
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
-###################################
+################## oppg 7 ########################
 
 df["Netto"] = (
     df["Production"]
     - df["Consumption"]
 )
-
+##################### oppg 8 #######################
 print(df.head())
 
 min_prod = round(df["Production"].min(), 2)
@@ -79,6 +79,7 @@ print(min_prod)
 print(max_prod)
 print(std_prod)
 
+################### oppg 9#######################
 min_netto = round(df["Netto"].min(), 2)
 max_netto = round(df["Netto"].max(), 2)
 
@@ -93,5 +94,38 @@ tid_min_netto = df["Netto"].idxmin()
 print("maksimal netto intreffer:" ,tid_max_netto)
 print("min netto intreffer:" ,tid_min_netto)
 
+##################### oppg 10 #####################
+
 print(df["Production"].sum())
 #denne koden viser total energi som har blitt produsert fra 1.januar.2026 til 20.mai.2026 (det er målt i MWh siden tidsintervallet er i timer)
+
+########################### oppg 11 ##########################
+
+df.plot(
+    y=["Production", "Consumption"],
+    figsize=(10, 5),
+    title="Produksjon Og Forbruk Over Tid",
+    xlabel="Tid",
+    ylabel="Effekt",
+    grid=True,
+    legend=True,
+)
+
+plt.tight_layout()
+plt.show()
+
+########################### Oppg 12 ################
+
+df.plot(
+    y=["Production", "Consumption", "Netto"],
+    figsize=(10, 5),
+    title="Produksjon, Forbruk Og Netto Over Tid",
+    xlabel="Tid",
+    ylabel="Effekt",
+    grid=True,
+    legend=True,
+)
+
+plt.tight_layout()
+plt.show()
+
