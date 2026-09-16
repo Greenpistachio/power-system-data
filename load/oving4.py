@@ -63,3 +63,19 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 ###################################
+
+df["Netto"] = (
+    df["Production"]
+    - df["Consumption"]
+)
+
+print(df.head())
+
+min_prod = round(df["Production"].min(), 2)
+max_prod = round(df["Production"].max(), 2)
+std_prod = round(df["Production"].std(), 2)
+
+print(min_prod)
+print(max_prod)
+print(std_prod)
+
