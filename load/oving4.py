@@ -79,3 +79,19 @@ print(min_prod)
 print(max_prod)
 print(std_prod)
 
+min_netto = round(df["Netto"].min(), 2)
+max_netto = round(df["Netto"].max(), 2)
+
+print(min_netto)
+print(max_netto)
+
+# når intreffer netto min og netto max?
+
+tid_max_netto = df["Netto"].idxmax()
+tid_min_netto = df["Netto"].idxmin()
+
+print("maksimal netto intreffer:" ,tid_max_netto)
+print("min netto intreffer:" ,tid_min_netto)
+
+print(df["Production"].sum())
+#denne koden viser total energi som har blitt produsert fra 1.januar.2026 til 20.mai.2026 (det er målt i MWh siden tidsintervallet er i timer)
