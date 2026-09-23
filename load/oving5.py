@@ -74,22 +74,27 @@ print(last_data)
 modell = np.linspace(0, 23, 500)
 
 #Grunnlast
-L_0_Modell = 3500
+L_0_Modell = 3900
 
 #Natt
-A_1 = 1000
-mju_1 = 0
-sigma_1 = 3.5
+A_1 = 1140
+mju_1 = -1
+sigma_1 = 3.85
 
 #morgen
-A_2 = 700
+A_2 = 840
 mju_2 = 8
-sigma_2 = 2
+sigma_2 = 2.5
+
+#dag
+A_3 = 50
+mju_3 = 12
+sigma_3 = 2.5
 
 #kveld
-A_3 = 2000
-mju_3 = 17
-sigma_3 = 8
+A_4 = 1925
+mju_4 = 17
+sigma_4 = 8
 
 Gauss_modell = (
 
@@ -99,6 +104,7 @@ L_0_Modell + A_1 * np.exp(-((modell-mju_1)**2) / (2*sigma_1**2) )
 
 + A_3*np.exp(-((modell-mju_3)**2) / (2*sigma_3**2) )
 
++ A_4*np.exp(-((modell-mju_4)**2) / (2*sigma_4**2) )
 )
 
 plt.plot(tid, last, "o-", label="Målt last")
