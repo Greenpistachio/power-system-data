@@ -20,12 +20,12 @@ t = np.linspace(0, 24, 500)
 G_t = A * np.exp(-((t - mju)**2) / (2 * sigma**2))
 
 #plotter gauss-modellen
-# plt.plot(t, G_t)
-# plt.xlabel("Tidspunkt (timer)")
-# plt.ylabel("Innstråling")
-# plt.title("Solinstråling")
-# plt.grid()
-# plt.show()
+plt.plot(t, G_t)
+plt.xlabel("Tidspunkt (timer)")
+plt.ylabel("Innstråling")
+plt.title("Solinstråling")
+plt.grid()
+plt.show()
 
 
 ####### oppg 2 #########
@@ -82,9 +82,45 @@ print(df["Global Solinnstråling"].idxmax())
 
 dag = df.loc["2023-06-04"]
 
-dag["Global Solinnstråling"].plot()
+timer = dag.index.hour
+
+plt.plot(timer, dag["Global Solinnstråling"], label="PVGIS")
 plt.xlabel("Tid")
 plt.ylabel("SolInnstråling W/M^2")
 plt.grid()
 plt.legend()
+plt.show()
+
+#oppg 6 gauss-kurve og modell sammen
+
+plt.figure()
+plt.plot(t, G_t, label="Gauss-kurve")
+plt.plot(timer, dag["Global Solinnstråling"], label="PVGIS")
+plt.xlabel("Tid")
+plt.ylabel("Solinnstråling [W/m^2]")
+plt.xlim(0, 24)
+plt.legend()
+plt.grid()
+plt.show()
+
+#oppg 7 justere parametere
+
+A = 835
+
+#maks innståling ved kl 13.00
+mju = 11.2
+
+#en bredde på 3 timer
+sigma = 4
+
+G_t = A * np.exp(-((t - mju)**2) / (2 * sigma**2))
+
+plt.figure()
+plt.plot(t, G_t, label="Gauss-kurve")
+plt.plot(timer, dag["Global Solinnstråling"], label="PVGIS")
+plt.xlabel("Tid")
+plt.ylabel("Solinnstråling [W/m^2]")
+plt.xlim(0, 24)
+plt.legend()
+plt.grid()
 plt.show()
